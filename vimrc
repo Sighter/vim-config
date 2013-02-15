@@ -3,7 +3,7 @@
 " @License:     GPL
 " @Created:     2013-02-15.
 " @Revision:    0.2 
-
+"
 " Section -- Options {{{1
 " terminal dependent stuff
 " **************************** "
@@ -13,8 +13,11 @@ execute pathogen#infect()
 
 " color settings, depending on color status 
 " of the used teminal
-" TODO make framebuffer mode here
-if &t_Co > 2 || has("gui_running")
+" framebuffer mode here
+if &term == "linux"
+    colorscheme pablo
+  	syntax on
+elseif &t_Co > 2 || has("gui_running")
   	syntax on
   	set hlsearch
     set t_Co=256            		" set 256 color
@@ -64,7 +67,6 @@ set guioptions-=l                   "remove left-hand scroll bar
 set guioptions-=L                   "remove left-hand scroll bar
 set guitablabel=[%N]\ %t\ %M
 
-let g:session_autoload = 'no'   " TODO Move this
 
 filetype on 					" enable filetype detection
 filetype plugin on				" enable filetype dependent plugins
@@ -169,7 +171,8 @@ autocmd BufNewFile *.cc TSkeletonSetup class_def.cc
 autocmd BufNewFile *.h TSkeletonSetup header.h
 let g:tskelBitGroup_h = ['h', 'cpp']
 
-" check snipmate TODO
+" session plugin
+let g:session_autoload = 'no'   " TODO Move this
 
 " clang completion
 let g:clang_use_library = 1
