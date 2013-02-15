@@ -18,7 +18,7 @@ if &t_Co > 2 || has("gui_running")
   	syntax on
   	set hlsearch
     set t_Co=256            		" set 256 color
-	let g:zenburn_high_Contrast=0	" high contrast for zenburn
+	let g:zenburn_high_Contrast=1	" high contrast for zenburn
     colors zenburn
 endif
 
@@ -108,6 +108,9 @@ augroup vimrcEx
     "    \   execute "hi Normal ctermbg=234" |
     "    \ endif
 
+    " automaticly source vimrc then written
+    autocmd bufwritepost .vimrc source $MYVIMRC
+
 augroup END
 
 " Section -- Functions and Commands {{{1
@@ -189,11 +192,17 @@ let g:haddock_browser = "/usr/bin/chromium"
 " Section -- key mappings {{{1
 " ============================
 
+" set the mapleader
+let mapleader = "ß"
+
+" edit vimrc
+nmap <leader>v :tabedit $MYVIMRC<CR>
+
 " no tabs in pastings
 set pastetoggle=<f5>
 
 " build ld tags of your own project with Ctrl-F10 TODO make language dependent
-map <F10> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F6> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " tab
 nnoremap <silent> <S-A-Left> :execute TabLeft()<CR>
@@ -210,15 +219,17 @@ nnoremap <silent> <A-n> :NERDTreeToggle<CR>
 inoremap <silent> <A-n> <esc>:NERDTreeToggle<CR>
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 inoremap <silent> <Leader>n <esc>:NERDTreeToggle<CR>
+nnoremap <F10> :NERDTreeToggle<CR>
+inoremap <F10> <esc>:NERDTreeToggle<CR>
 
 " clang
 nnoremap <silent> <F7> :call g:ClangUpdateQuickFix()<CR>
 inoremap <silent> <F7> <ESC>:call g:ClangUpdateQuickFix()<CR>
 
 " tskeleton
-inoremap <silent> <F6> <ESC>:call tskeleton#ExpandBitUnderCursor('n')<CR>
+"inoremap <silent> <F9> <ESC>:call tskeleton#ExpandBitUnderCursor('n')<CR>
 "nnoremap <F5> :TSkeletonBit<CR>
 
 " tagbar
-nnoremap <silent> <F8> :TagbarToggle<CR>
-inoremap <silent> <F8> <ESC>:TagbarToggle<CR>
+nnoremap <silent> <F11> :TagbarToggle<CR>
+inoremap <silent> <F11> <ESC>:TagbarToggle<CR>
