@@ -8,6 +8,9 @@
 " terminal dependent stuff
 " **************************** "
 
+" Pathogen has to be the first thing!
+execute pathogen#infect()
+
 " color settings, depending on color status 
 " of the used teminal
 " TODO make framebuffer mode here
