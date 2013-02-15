@@ -4,3 +4,9 @@
 [submodule "bundle/solarized"]
 	path = bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/zenburn"]
+	path = bundle/zenburn
+	url = https://github.com/jnurmine/Zenburn.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar

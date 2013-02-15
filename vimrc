@@ -18,10 +18,8 @@ if &t_Co > 2 || has("gui_running")
   	syntax on
   	set hlsearch
     set t_Co=256            		" set 256 color
-    let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-	let g:zenburn_high_Contrast=1	" high contrast for zenburn
-    set background=dark
-	colorscheme solarized		  		" define syntax color scheme
+	let g:zenburn_high_Contrast=0	" high contrast for zenburn
+    colors zenburn
 endif
 
 " Enable mouse, if compiled in
