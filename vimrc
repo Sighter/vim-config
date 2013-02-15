@@ -20,7 +20,8 @@ if &t_Co > 2 || has("gui_running")
     set t_Co=256            		" set 256 color
     let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 	let g:zenburn_high_Contrast=1	" high contrast for zenburn
-	colorscheme rdark		  		" define syntax color scheme
+    set background=dark
+	colorscheme solarized		  		" define syntax color scheme
 endif
 
 " Enable mouse, if compiled in
