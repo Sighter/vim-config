@@ -2,7 +2,8 @@ Instructions:
     
 Clone the repo and link your vimrc
 
-    git clone git://github.com/Sighter/vim-config.git
+    cd
+    git clone git://github.com/Sighter/vim-config.git .vim
     ~/.vim/linkdown.sh
 
 The vimrc is framebuffer aware so check, whether you have set the
