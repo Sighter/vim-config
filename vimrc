@@ -16,35 +16,36 @@ execute pathogen#infect()
 " framebuffer mode here
 if &term == "linux"
     colorscheme pablo
-  	syntax on
+    syntax on
 elseif &t_Co > 2 || has("gui_running")
-  	syntax on
-  	set hlsearch
-    set t_Co=256            		" set 256 color
-	let g:zenburn_high_Contrast=1	" high contrast for zenburn
+    syntax on
+    set hlsearch
+    set t_Co=256                    " set 256 color
+    let g:zenburn_high_Contrast=1   " high contrast for zenburn
     colors zenburn
 endif
 
 " Enable mouse, if compiled in
 if has('mouse')
-	set mouse=a
+    set mouse=a
 endif
 
-set nocompatible				" use vim defaults
-set backspace=indent,eol,start	" backspace behaviour
-set history=100					" keep 100 lines of command line history
-set ruler						" show the cursor position all the time
-set showcmd						" display incomplete commands
-set incsearch					" do incremental searching
-set clipboard+=unnamed			" yank and copy to X clipboard TODO check tut about registers
-set foldmethod=marker  			" use the markers to fold
-set foldcolumn=4  			    " the width of the column on the left
-set number  					" show line-numbers
-set showmode             		" show mode at bottom of screen
-set laststatus=2 				" show statusline
+set nocompatible                " use vim defaults
+set backspace=indent,eol,start  " backspace behaviour
+set history=100                 " keep 100 lines of command line history
+set ruler                       " show the cursor position all the time
+set showcmd                     " display incomplete commands
+set incsearch                   " do incremental searching
+set clipboard+=unnamed          " yank and copy to X clipboard TODO check tut about registers
+set foldmethod=marker           " use the markers to fold
+set foldcolumn=4                " the width of the column on the left
+set number                      " show line-numbers
+set list                        " show whitespace chars
+set showmode                    " show mode at bottom of screen
+set laststatus=2                " show statusline
 set statusline=%F%m%r%h%w\ \|\ format:%{&ff}\ \|\ type:%Y\ \|\ pos:%4l,%4v\ \|\ lines:%L\ \|%=%3p%%
 
-set complete+=k         		" enable dictionary completion
+set complete+=k                 " enable dictionary completion
 set wildmode=longest,list,full  " wildmode sets how completion works after multiple tab strokes
 set completeopt=menuone,menu,longest,preview " aquivalent for above
 set wildignorecase              " ignore case when completing
@@ -52,11 +53,12 @@ set ignorecase                  " smartcase search
 set smartcase                   " smartcase search
 set autochdir                   " automatacly change dir when opening new buffer
 
-set nowrap						" don't wrap text on end of screen
+set nowrap                      " don't wrap text on end of screen
 
 set tabstop=4       " tab settings
 set shiftwidth=4    " used for autoindent
 set expandtab       " insert spaces when hitting tab
+set softtabstop=4   " makes the spaces feel like real tabs
 
 set spelllang=de    " spelllang
 
@@ -68,9 +70,9 @@ set guioptions-=L                   "remove left-hand scroll bar
 set guitablabel=[%N]\ %t\ %M
 
 
-filetype on 					" enable filetype detection
-filetype plugin on				" enable filetype dependent plugins
-filetype indent on				" enable filetype dependent indentation
+filetype on        " enable filetype detection
+filetype plugin on " enable filetype dependent plugins
+filetype indent on " enable filetype dependent indentation
 
 
 
@@ -79,30 +81,30 @@ filetype indent on				" enable filetype dependent indentation
 
 " make an autocmd group
 augroup vimrcEx
-	" remove all autocmd, so they aren't sourced twice
-	autocmd!
-	
-	" For all text files set 'textwidth' to 78 characters.
-	autocmd FileType text setlocal textwidth=78
+    " remove all autocmd, so they aren't sourced twice
+    autocmd!
+    
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
 
-	" When editing a file, always jump to the last known cursor position.
-	" Don't do it when the position is invalid or when inside an event handler
-	" (happens when dropping a file on gvim).
-	" Also don't do it when the mark is in the first line, that is the default
-	" position when opening a file.
-	autocmd BufReadPost *
-		\ if line("'\"") > 1 && line("'\"") <= line("$") |
-		\   exe "normal! g`\"" |
-		\ endif
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    " Also don't do it when the mark is in the first line, that is the default
+    " position when opening a file.
+    autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
 
     " autocmd for the tagbar
-	autocmd BufNewFile,BufRead *.c,*.cpp,*.cc,*.h,*.py,*.php | exe "TagbarOpen"
-	
-	" use synax autocompletion, if no omnifunc is set
-	autocmd Filetype *
-		\ if &omnifunc == "" |
-		\ 	setlocal omnifunc=syntaxcomplete#Complete |
-		\ endif
+    autocmd BufNewFile,BufRead *.c,*.cpp,*.cc,*.h,*.py,*.php | exe "TagbarOpen"
+    
+    " use synax autocompletion, if no omnifunc is set
+    autocmd Filetype *
+        \ if &omnifunc == "" |
+        \   setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
 
     " dirty fix for rdark colorscheme
     "autocmd VimEnter * 
@@ -142,8 +144,8 @@ endfunction
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
-	command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		\ | wincmd p | diffthis
+    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+        \ | wincmd p | diffthis
 endif
 
 
@@ -155,15 +157,15 @@ set tags+=~/.vim/tags/cpp,~/.vim/tags/libconfig
 
 " tagbar plugin 
 let g:tagbar_width = 30
-let g:tagbar_left = 1
+let g:tagbar_left  = 1
 
 " ACP options
 let g:acp_behaviorKeywordLength = 1
 
 " tskeleton options 
-let g:tskelUserName = "The Sighter"
+let g:tskelUserName  = "The Sighter"
 let g:tskelUserEmail = "sighter@resource-dnb.de"
-let g:tskelLicense = "GPL"
+let g:tskelLicense   = "GPL"
 
 autocmd BufNewFile *.py TSkeletonSetup python.py
 autocmd BufNewFile *.cpp TSkeletonSetup cpp.cpp
@@ -175,13 +177,13 @@ let g:tskelBitGroup_h = ['h', 'cpp']
 let g:session_autoload = 'no'   " TODO Move this
 
 " clang completion
-let g:clang_use_library = 1
-let g:clang_complete_copen = 1
-let g:clang_hl_errors = 1
+let g:clang_use_library       = 1
+let g:clang_complete_copen    = 1
+let g:clang_hl_errors         = 1
 let g:clang_periodic_quickfix = 1
-let g:clang_snippets = 1
-let g:clang_conceal_snippets = 1
-let g:clang_complete_macros = 1
+let g:clang_snippets          = 1
+let g:clang_conceal_snippets  = 1
+let g:clang_complete_macros   = 1
 let g:clang_complete_patterns = 1
 
 " Haskell mode
@@ -200,6 +202,14 @@ let mapleader = "ß"
 
 " edit vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
+
+" Shortcut to rapidly toggle `set list` means that you can see whitespace
+" chars
+nmap <leader>l :set list!<CR>
+ 
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
 
 " no tabs in pastings
 set pastetoggle=<f5>
