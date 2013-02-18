@@ -25,3 +25,6 @@
 [submodule "bundle/clang-complete"]
 	path = bundle/clang-complete
 	url = git://github.com/Rip-Rip/clang_complete.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips

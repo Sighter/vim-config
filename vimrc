@@ -246,3 +246,10 @@ inoremap <silent> <F7> <ESC>:call g:ClangUpdateQuickFix()<CR>
 " tagbar
 nnoremap <silent> <F11> :TagbarToggle<CR>
 inoremap <silent> <F11> <ESC>:TagbarToggle<CR>
+
+" Ultisnips
+let g:UltiSnipsEditSplit = 'vertical'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+

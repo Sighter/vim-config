@@ -1,0 +1,14 @@
+snippet for "simple for" !b
+for $1 in ${2:iterator}:
+    ${3:# code here}
+endsnippet
+
+snippet cl "My custom class" !b
+class ${1:ClassName}:
+    """${2:The docstring}"""
+    # TODO implement
+endsnippet
+
+snippet todo "Todo expression" b
+# TODO: ${1:desc} `!v strftime("%c")`
+endsnippet
