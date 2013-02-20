@@ -121,7 +121,7 @@ augroup END
 " ******************************** "
 
 " tab functions for movement
-function TabLeft()
+function TabLeft() " {{{2
    let tab_number = tabpagenr() - 1
    if tab_number == 0
       execute "tabm" tabpagenr('$') - 1
@@ -139,6 +139,42 @@ function TabRight()
       execute "tabm" tab_number + 1
    endif
 endfunction
+" }}}
+
+" smart toggle function for nerdtree
+function! ToggleNERDTreeAndTagbar() " {{{
+    let w:jumpbacktohere = 1
+
+    " Detect which plugins are open
+    if exists('t:NERDTreeBufName')
+        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
+    else
+        let nerdtree_open = 0
+    endif
+    let tagbar_open = bufwinnr('__Tagbar__') != -1
+
+    " Perform the appropriate action
+    if nerdtree_open && tagbar_open
+        NERDTreeClose
+        TagbarClose
+    elseif nerdtree_open
+        NERDTreeClose
+        TagbarOpen
+    elseif tagbar_open
+        TagbarClose
+    else
+        NERDTree
+    endif
+
+    " Jump back to the original window
+    "for window in range(1, winnr('$'))
+    "    execute window . 'wincmd w'
+    "    if exists('w:jumpbacktohere')
+    "        unlet w:jumpbacktohere
+    "        break
+    "    endif
+    "endfor
+endfunction " }}}
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
@@ -244,8 +280,8 @@ inoremap <silent> <F7> <ESC>:call g:ClangUpdateQuickFix()<CR>
 "nnoremap <F5> :TSkeletonBit<CR>
 
 " tagbar
-nnoremap <silent> <F11> :TagbarToggle<CR>
-inoremap <silent> <F11> <ESC>:TagbarToggle<CR>
+inoremap <silent> <F12> <ESC>:call ToggleNERDTreeAndTagbar()<CR>
+nnoremap <silent> <F12> :call ToggleNERDTreeAndTagbar()<CR>
 
 " Ultisnips
 let g:UltiSnipsEditSplit = 'vertical'
