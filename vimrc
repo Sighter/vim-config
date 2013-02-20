@@ -114,6 +114,7 @@ augroup vimrcEx
 
     " automaticly source vimrc then written
     autocmd bufwritepost .vimrc source $MYVIMRC
+    autocmd bufwritepost vimrc source $MYVIMRC
 
 augroup END
 
@@ -121,7 +122,7 @@ augroup END
 " ******************************** "
 
 " tab functions for movement
-function TabLeft() " {{{2
+function! TabLeft() " {{{2
    let tab_number = tabpagenr() - 1
    if tab_number == 0
       execute "tabm" tabpagenr('$') - 1
@@ -130,7 +131,7 @@ function TabLeft() " {{{2
    endif
 endfunction
 
-function TabRight()
+function! TabRight()
    let tab_number = tabpagenr() - 1
    let last_tab_number = tabpagenr('$') - 1
    if tab_number == last_tab_number
@@ -142,7 +143,7 @@ endfunction
 " }}}
 
 " smart toggle function for nerdtree
-function! ToggleNERDTreeAndTagbar() " {{{
+function! ToggleNERDTreeAndTagbar() " {{{2
     let w:jumpbacktohere = 1
 
     " Detect which plugins are open
@@ -183,7 +184,6 @@ if !exists(":DiffOrig")
     command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
         \ | wincmd p | diffthis
 endif
-
 
 " Section -- Extended vim settings and plugin settings{{{1
 " ******************************** "
