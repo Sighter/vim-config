@@ -28,3 +28,6 @@
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips
+[submodule "bundle/capprox"]
+	path = bundle/capprox
+	url = git://github.com/godlygeek/csapprox.git
