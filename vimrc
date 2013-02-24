@@ -98,7 +98,7 @@ augroup vimrcEx
         \ endif
 
     " autocmd for the tagbar
-    autocmd BufNewFile,BufRead *.c,*.cpp,*.cc,*.h,*.py,*.php | exe "TagbarOpen"
+    "autocmd BufNewFile,BufRead *.c,*.cpp,*.cc,*.h,*.py,*.php | exe "TagbarOpen"
     
     " use synax autocompletion, if no omnifunc is set
     autocmd Filetype *
