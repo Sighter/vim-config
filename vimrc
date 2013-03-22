@@ -30,6 +30,7 @@ if has('mouse')
     set mouse=a
 endif
 
+set encoding=utf-8
 set nocompatible                " use vim defaults
 set backspace=indent,eol,start  " backspace behaviour
 set history=100                 " keep 100 lines of command line history
