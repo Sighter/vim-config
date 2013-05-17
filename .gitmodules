@@ -31,3 +31,6 @@
 [submodule "bundle/capprox"]
 	path = bundle/capprox
 	url = git://github.com/godlygeek/csapprox.git
+[submodule "bundle/phpcomplete"]
+	path = bundle/phpcomplete
+	url = https://github.com/shawncplus/phpcomplete.vim.git
