@@ -191,6 +191,7 @@ endif
 
 " configure tags - ever source this tag files
 set tags+=~/.vim/tags/cpp,~/.vim/tags/libconfig
+set tags+=./tags;
 
 " tagbar plugin 
 let g:tagbar_width = 30
@@ -239,6 +240,9 @@ let mapleader = "ß"
 
 " edit vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
+
+" jump to tag and open new tab
+nmap <leader>g <C-w><C-]><C-w>T
 
 " Shortcut to rapidly toggle `set list` means that you can see whitespace
 " chars
